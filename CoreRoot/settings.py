@@ -25,7 +25,9 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
-
+    # External packages
+    'rest_framework',
+    # Internal packages
     'core',
     'core.user',
 ]
