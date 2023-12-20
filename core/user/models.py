@@ -7,7 +7,7 @@ from django.db import models
 from core.abstract.models import AbstractManager, AbstractModel
 
 
-class UserManager(BaseUserManager):
+class UserManager(BaseUserManager, AbstractManager):
     """
     Custom user model manager where email is the unique identifier
     for authentication instead of username.

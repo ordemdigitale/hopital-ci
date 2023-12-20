@@ -161,3 +161,5 @@ cython_debug/
 
 # Ignore Django database migrations
 **/migrations/
+
+*tes.txt
