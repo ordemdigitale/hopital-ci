@@ -4,7 +4,7 @@ from django.contrib.auth.models import (
 from django.utils.translation import gettext_lazy as _
 from django.db import models
 
-from core.abstract.models import AbstractModel
+from core.abstract.models import AbstractManager, AbstractModel
 
 
 class UserManager(BaseUserManager):
