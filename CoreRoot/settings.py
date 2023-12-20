@@ -31,6 +31,7 @@ INSTALLED_APPS = [
     # Internal packages
     'core',
     'core.user',
+    'core.auth',
 ]
 
 MIDDLEWARE = [
