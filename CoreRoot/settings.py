@@ -32,6 +32,7 @@ INSTALLED_APPS = [
     'core',
     'core.user',
     'core.auth',
+    'core.insurance',
 ]
 
 MIDDLEWARE = [

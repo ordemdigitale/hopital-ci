@@ -6,6 +6,7 @@ from core.auth.viewsets import (
     LoginViewSet,
     RefreshViewSet,
 )
+from core.insurance.viewsets import InsuranceViewSet
 
 router = routers.SimpleRouter()
 
@@ -16,6 +17,9 @@ router.register(r'auth/refresh', RefreshViewSet, basename='auth-refresh')
 
 # ################### USER ###################### #
 router.register(r'users', UserViewSet, basename='user')
+
+# ################### insurance ###################### #
+router.register(r'insurances', InsuranceViewSet, basename='insurance')
 
 urlpatterns = [
     *router.urls,
