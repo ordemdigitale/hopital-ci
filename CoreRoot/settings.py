@@ -153,3 +153,11 @@ DJOSER = {
     },
 }
 
+# Email config (AWS SES Service)
+EMAIL_BACKEND = os.environ.get('EMAIL_BACKEND')
+DEFAULT_FROM_EMAIL = os.environ.get('AWS_SES_FROM_EMAIL')
+AWS_ACCESS_KEY_ID = os.environ.get('AWS_ACCESS_KEY_ID')
+AWS_SECRET_ACCESS_KEY = os.environ.get('AWS_SECRET_ACCESS_KEY')
+AWS_SES_FROM_EMAIL = os.environ.get('AWS_SES_FROM_EMAIL')
+# If you want to use the SESv2 client
+USE_SES_V2 = True
