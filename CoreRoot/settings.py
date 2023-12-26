@@ -1,4 +1,5 @@
 from pathlib import Path
+from datetime import timedelta
 import os
 from dotenv import load_dotenv
 load_dotenv()
@@ -16,7 +17,10 @@ SECRET_KEY = os.environ.get('SECRET_KEY')
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = [
+    'localhost',
+    '127.0.0.1'
+]
 
 # Application definition
 INSTALLED_APPS = [
@@ -29,6 +33,8 @@ INSTALLED_APPS = [
     # External packages
     'rest_framework',
     'rest_framework_simplejwt',
+    'djoser',
+    'corsheaders',
     # Internal packages
     'core',
     'core.user',
@@ -132,3 +138,19 @@ REST_FRAMEWORK = {
     'DEFAULT_PAGINATION_CLASS': 'rest_framework.pagination.LimitOffsetPagination',
     'PAGE_SIZE': 10
 }
+
+# Djoser config
+DJOSER = {
+    'PASSWORD_RESET_CONFIRM_URL': 'api/v1/auth/password-reset/{uid}/{token}',
+    'SEND_ACTIVATION_EMAIL': True,
+    'ACTIVATION_URL': 'api/v1/auth/activation/{uid}/{token}',
+    'USER_CREATE_PASSWORD_RETYPE': True,
+    'PASSWORD_RESET_CONFIRM_RETYPE': True,
+    'TOKEN_MODEL': None,
+    'SERIALIZERS': {
+        'user_create': 'core.auth.serializers.register.RegisterSerializer',
+        'current_user': 'core.user.serializers.UserSerializer',
+        'user': 'core.user.serializers.UserSerializer',
+    },
+}
+
