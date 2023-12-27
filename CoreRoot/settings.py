@@ -153,6 +153,9 @@ DJOSER = {
     },
 }
 
+DOMAIN = 'localhost:5173'
+SITE_NAME = 'Hopital CI'
+
 # Email config (AWS SES Service)
 EMAIL_BACKEND = os.environ.get('EMAIL_BACKEND')
 DEFAULT_FROM_EMAIL = os.environ.get('AWS_SES_FROM_EMAIL')
