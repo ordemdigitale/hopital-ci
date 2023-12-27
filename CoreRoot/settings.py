@@ -34,6 +34,7 @@ INSTALLED_APPS = [
     'rest_framework_simplejwt',
     'djoser',
     'corsheaders',
+    'social_django'
     # Internal packages
     'core',
     'core.user',
@@ -45,6 +46,7 @@ INSTALLED_APPS = [
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
     'django.contrib.sessions.middleware.SessionMiddleware',
+    'corsheaders.middleware.CorsMiddleware', # Cors headers middleware
     'django.middleware.common.CommonMiddleware',
     'django.middleware.csrf.CsrfViewMiddleware',
     'django.contrib.auth.middleware.AuthenticationMiddleware',
@@ -131,12 +133,20 @@ AUTH_USER_MODEL = 'core_user.User'
 # Restframework settings
 REST_FRAMEWORK = {
     'DEFAULT_AUTHENTICATION_CLASSES': (
-        'rest_framework_simplejwt.authentication.JWTAuthentication',
+        'core.auth.authentication.CustomJWTAuthentication', # CustomJWTAuthentication
+        #'rest_framework_simplejwt.authentication.JWTAuthentication',
     ),
     'DEFAULT_FILTER_BACKENDS': ['django_filters.rest_framework.DjangoFilterBackend'],
     'DEFAULT_PAGINATION_CLASS': 'rest_framework.pagination.LimitOffsetPagination',
     'PAGE_SIZE': 10
 }
+
+# Cors-headers allowed origins
+CORS_ALLOWED_ORIGINS = [
+    "http://localhost:5173", # Vite frontend
+    "http://127.0.0.1:5173", # Vite frontend
+]
+CORS_ALLOW_CREDENTIALS = True
 
 # Djoser config
 DJOSER = {
@@ -152,6 +162,15 @@ DJOSER = {
         'user': 'core.user.serializers.UserSerializer',
     },
 }
+
+# Auth Cookie config
+AUTH_COOKIE = 'access'
+AUTH_COOKIE_ACCESS_MAX_AGE = 60 * 5
+AUTH_COOKIE_REFRESH_MAX_AGE = 60 * 60 * 24
+AUTH_COOKIE_SECURE = os.environ.get('AUTH_COOKIE_SECURE', 'True') == 'True'
+AUTH_COOKIE_HTTP_ONLY = True
+AUTH_COOKIE_PATH = '/'
+AUTH_COOKIE_SAMESITE = 'None' # Other options are Lax, Strict
 
 DOMAIN = 'localhost:5173'
 SITE_NAME = 'Hopital CI'
