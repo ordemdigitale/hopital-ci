@@ -1,7 +1,7 @@
 from pathlib import Path
 import os
 from dotenv import load_dotenv
-load_dotenv()
+load_dotenv('D:/z_perso/proj/dev/python/hopital-ci/.env')
 
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
@@ -163,7 +163,8 @@ DJOSER = {
     'USER_CREATE_PASSWORD_RETYPE': True,
     'PASSWORD_RESET_CONFIRM_RETYPE': True,
     'TOKEN_MODEL': None,
-    'SOCIAL_AUTH_ALLOWED_REDIRECT_URIS': 'http://localhost:5173/auth/google,http://localhost:5173/auth/facebook'.split(','),
+    'SOCIAL_AUTH_ALLOWED_REDIRECT_URIS': os.environ.get('REDIRECT_URLS').split(','),
+    #'SOCIAL_AUTH_ALLOWED_REDIRECT_URIS': 'http://localhost:5173/auth/google,http://localhost:5173/auth/facebook'.split(','),
     'SERIALIZERS': {
         'user_create': 'core.auth.serializers.register.RegisterSerializer',
         'current_user': 'core.user.serializers.UserSerializer',
@@ -191,8 +192,8 @@ SOCIAL_AUTH_GOOGLE_OAUTH2_SCOPE = [
 ]
 SOCIAL_AUTH_GOOGLE_OAUTH2_EXTRA_DATA = ['first_name', 'last_name']
 ## FACEBOOK
-SOCIAL_AUTH_FACEBOOK_KEY = os.environ.get('FACEBOOK_AUTH_KEY')
-SOCIAL_AUTH_FACEBOOK_SECRET = os.environ.get('FACEBOOK_AUTH_SECRET_KEY')
+SOCIAL_AUTH_FACEBOOK_KEY = os.getenv('SOCIAL_AUTH_FACEBOOK_KEY')
+SOCIAL_AUTH_FACEBOOK_SECRET = os.environ.get('SOCIAL_AUTH_FACEBOOK_SECRET')
 SOCIAL_AUTH_FACEBOOK_SCOPE = ['email']
 SOCIAL_AUTH_FACEBOOK_PROFILE_EXTRA_PARAMS = {
     'fields': 'email, first_name, last_name'
