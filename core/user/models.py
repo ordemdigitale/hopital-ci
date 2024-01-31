@@ -23,7 +23,7 @@ class UserManager(BaseUserManager, AbstractManager):
         user.set_password(password)
         user.save(using=self._db)
         return user
-        
+
     def create_superuser(self, email, password=None, **extra_fields):
         """
         Create and save a SuperUser with the given email and password.
@@ -45,8 +45,9 @@ class User(AbstractModel, AbstractBaseUser, PermissionsMixin):
     last_name = models.CharField(max_length=150, blank=True, default='')
     phone_number = models.CharField(max_length=15, blank=True, default='')
 
-    is_active = models.BooleanField(default=True)
     is_staff = models.BooleanField(default=False)
+    is_superuser = models.BooleanField(default=False)
+    is_active = models.BooleanField(default=True)
 
     objects = UserManager()
 
