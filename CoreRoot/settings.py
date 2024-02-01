@@ -1,7 +1,8 @@
 from pathlib import Path
 import os
 from dotenv import load_dotenv
-load_dotenv('D:/z_perso/proj/dev/python/hopital-ci/.env')
+#load_dotenv('D:/z_perso/proj/dev/python/hopital-ci/.env') # Windows
+load_dotenv('/home/masta/health_facilities_ci/backend/.env') # Ubuntu(WSL for Windows)
 
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
@@ -41,6 +42,7 @@ INSTALLED_APPS = [
     'core.auth',
     'core.insurance',
     'core.healthcare',
+    'core.facilities',
 ]
 
 MIDDLEWARE = [

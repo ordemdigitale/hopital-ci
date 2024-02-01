@@ -26,8 +26,6 @@ class Healthcenter(AbstractModel):
     email = models.EmailField(default='', blank=True)
     phone_number = models.CharField(max_length=18, default='', blank=True)
     address = models.CharField(max_length=200, default='', blank=True)
-    #long = models.
-    #lat = models.
 
     category = models.ForeignKey(
         to=Category, null=True, on_delete=models.SET_NULL
